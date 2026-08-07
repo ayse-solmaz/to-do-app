@@ -23,6 +23,7 @@ class _ToDoAppState extends State<ToDoApp>{
     // default data
     if(_myBox.get("TODOLIST") == null){
       db.createInitialData();
+      db.updateDatabase();
     }
     else{
       // there already exists data
@@ -75,7 +76,9 @@ class _ToDoAppState extends State<ToDoApp>{
         return Scaffold(
             backgroundColor: Colors.blue[300],
             appBar:AppBar(
-                title:Center(child: Text("Yapılacaklar")),
+              backgroundColor:Colors.blue[800],
+                title:Center(child: Text("yapılacaklar"),
+                ),
                 elevation:0,
             ),
             floatingActionButton: FloatingActionButton(

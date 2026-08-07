@@ -16,7 +16,7 @@ final VoidCallback onCancel;
   @override
   Widget build(BuildContext context){
     return AlertDialog(
-      backgroundColor:Colors.yellow,
+      backgroundColor:Colors.white,
       content: Container(
         height:120,
         child:Column(
@@ -37,7 +37,7 @@ final VoidCallback onCancel;
               MyButton(text:"kaydet",onPressed:onSave),
               const SizedBox(width:8),
               // cancel button
-              MyButton(text:"sil",onPressed:onCancel),
+              MyButton(text:"iptal",onPressed:onCancel),
             ]
           )
          ]
