@@ -1,17 +1,53 @@
-# to_do_app
+# Yapılacaklar (To-Do App)
 
-A new Flutter project.
+Flutter ile geliştirilmiş basit bir yapılacaklar listesi uygulaması. Görevler cihaz üzerinde Hive ile kalıcı olarak saklanır.
 
-## Getting Started
+## Özellikler
 
-This project is a starting point for a Flutter application.
+- Görev ekleme
+- Görevleri tamamlandı olarak işaretleme
+- Kaydırarak (swipe) görev silme
+- Hive ile yerel veri saklama (uygulama kapanınca görevler kaybolmaz)
 
-A few resources to get you started if this is your first Flutter project:
+## Kullanılan teknolojiler
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+- Flutter / Dart
+- Hive & Hive Flutter (yerel veritabanı)
+- flutter_slidable (kaydırarak silme)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Proje yapısı
+
+```
+lib/
+  main.dart              # Uygulama girişi, Hive başlatma
+  data/
+    database.dart        # Hive okuma / yazma işlemleri
+  pages/
+    home_page.dart       # Ana ekran (liste, ekle, sil, checkbox)
+  util/
+    todo_tile.dart       # Tek bir görev satırı
+    dialog_box.dart      # Yeni görev ekleme diyaloğu
+    my_button.dart       # Ortak buton bileşeni
+```
+
+## Çalıştırma
+
+1. Bağımlılıkları yükle:
+
+```bash
+flutter pub get
+```
+
+2. Uygulamayı başlat:
+
+```bash
+flutter run
+```
+
+## Nasıl kullanılır?
+
+1. Sağ alttaki **+** butonuna bas.
+2. Görevi yazıp **kaydet**e tıkla.
+3. Checkbox ile görevi tamamla.
+4. Görevi sola kaydırarak sil.
+
