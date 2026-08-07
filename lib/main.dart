@@ -1,6 +1,17 @@
 import "package:flutter/material.dart";
-import 'package:to_do_app/home_page.dart';
-void main(){
+import 'package:to_do_app/pages.dart/home_page.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+void main() async{
+
+  // initialize hive
+  await Hive.initFlutter();
+
+  // open a box
+  var box = await Hive.openBox('mybox');
+
+
+
+
   runApp(const MyApp());
 }
 class MyApp extends StatelessWidget{
@@ -8,10 +19,9 @@ class MyApp extends StatelessWidget{
 
   @override
   Widget build(BuildContext context){
-    return const MaterialApp (
+    return MaterialApp (
       debugShowCheckedModeBanner: false,
-      home: ToDoApp(),
-
-        );
+      home: const ToDoApp(),
+      );
     }
   }
