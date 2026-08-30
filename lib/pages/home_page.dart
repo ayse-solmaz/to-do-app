@@ -1,10 +1,12 @@
 
-
 import "package:flutter/material.dart";
+import "package:flutter/services.dart";
 import "package:to_do_app/util/dialog_box.dart";
 import "package:to_do_app/util/todo_tile.dart";
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:to_do_app/data/database.dart';
+import 'package:to_do_app/util/app_style.dart';
+
 
 class ToDoApp extends StatefulWidget{
     const ToDoApp({super.key});
@@ -54,6 +56,7 @@ class _ToDoAppState extends State<ToDoApp>{
     void createNewTask() {
       showDialog(
         context:context,
+        barrierColor: navyAlpha(0.30),
         builder:(context)
          {
           return DialogBox(
@@ -74,19 +77,43 @@ class _ToDoAppState extends State<ToDoApp>{
     @override
     Widget build(BuildContext context){
         return Scaffold(
-            backgroundColor: Colors.blue[300],
-            appBar:AppBar(
-              backgroundColor:Colors.blue[800],
-                title:Center(child: Text("yapılacaklar"),
+            backgroundColor: Colors.white,
+            appBar: AppBar(
+              backgroundColor: Colors.white,
+              surfaceTintColor: Colors.white,
+              elevation: 0,
+              scrolledUnderElevation: 0,
+              centerTitle: true,
+              systemOverlayStyle: SystemUiOverlayStyle.dark,
+              title: const Text(
+                "yapılacaklar",
+                style: TextStyle(
+                  color: kNavy,
+                  fontSize: 19,
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: -0.2,
                 ),
-                elevation:0,
+              ),
+              bottom: PreferredSize(
+                preferredSize: const Size.fromHeight(1),
+                child: Container(height: 1, color: navyAlpha(0.08)),
+              ),
             ),
             floatingActionButton: FloatingActionButton(
               onPressed: createNewTask,
-              child:const Icon(Icons.add),
-              backgroundColor: Colors.blue[800],
+              backgroundColor: kNavy,
+              foregroundColor: Colors.white,
+              elevation: 0,
+              focusElevation: 0,
+              hoverElevation: 0,
+              highlightElevation: 0,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18),
+              ),
+              child:const Icon(Icons.add, size: 28),
             ),
             body:ListView.builder(
+              padding: const EdgeInsets.only(top: 8, bottom: 120),
               itemCount: db.toDoList.length,
               itemBuilder:(context,index) {
                 return ToDoTile
@@ -94,12 +121,11 @@ class _ToDoAppState extends State<ToDoApp>{
                     taskName:db.toDoList[index][0],taskCompleted:db.toDoList[index][1],onChanged:(value) => checkBoxChanged(value,index),
                     deleteTask: (context) => deleteTask(index),
                   );
-                  
+
               }
             ),
-    
-    
-    );   
+
+
+    );
   }
 }
-

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:to_do_app/util/app_style.dart';
 
 class ToDoTile extends StatelessWidget {
   final String taskName;
@@ -19,33 +20,61 @@ class ToDoTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding:const EdgeInsets.only(
-        left: 24, right: 24, top: 8),
+        left: 20, right: 20, top: 10),
        child:Slidable(
         endActionPane:ActionPane(
-          motion:StretchMotion(),
+          motion:const StretchMotion(),
+          extentRatio: 0.24,
           children:[
             SlidableAction(
               onPressed: deleteTask,
-              icon:Icons.delete,
-              backgroundColor:Colors.red.shade300,
+              icon:Icons.delete_outline_rounded,
+              backgroundColor: kNavyDark,
+              foregroundColor: Colors.white,
+              borderRadius: BorderRadius.circular(18),
+              padding: EdgeInsets.zero,
             )
           ]
         ),
-         child: Container(
-          decoration:BoxDecoration(
-          color:Colors.blue[200],
-          borderRadius:BorderRadius.circular(12),
-          ),
+         child: AppCard(
+          muted: taskCompleted,
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
                child:Row(
           children: [
             // checkbox
-            Checkbox(
-              value: taskCompleted, onChanged:onChanged,
-              activeColor: Colors.black),
+            SizedBox(
+              width: 24,
+              height: 24,
+              child: Checkbox(
+                value: taskCompleted, onChanged:onChanged,
+                activeColor: Colors.white,
+                checkColor: kNavy,
+                side: BorderSide(
+                  color: whiteAlpha(0.55),
+                  width: 1.5,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(6),
+                ),
+                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              ),
+            ),
+            const SizedBox(width: 16),
             // task name
-            Text(
-              taskName,
-              style:TextStyle(decoration:taskCompleted ? TextDecoration.lineThrough : TextDecoration.none),),
+            Expanded(
+              child: Text(
+                taskName,
+                style:TextStyle(
+                  color: taskCompleted ? whiteAlpha(0.60) : Colors.white,
+                  fontSize: 15.5,
+                  fontWeight: FontWeight.w500,
+                  height: 1.35,
+                  letterSpacing: -0.1,
+                  decoration:taskCompleted ? TextDecoration.lineThrough : TextDecoration.none,
+                  decorationColor: whiteAlpha(0.60),
+                ),
+              ),
+            ),
           ],
                ),
              ),
