@@ -1,9 +1,6 @@
 import "package:flutter/material.dart";
-import 'package:to_do_app/pages/auth_page.dart';
-import 'package:to_do_app/pages/home_page.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'package:to_do_app/util/app_style.dart';
-import 'package:to_do_app/pages/login_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:to_do_app/pages/auth_page.dart';
@@ -15,11 +12,11 @@ WidgetsFlutterBinding.ensureInitialized();
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  // initialize hive
+  // initialize hive_ce
   await Hive.initFlutter();
 
   // open a box
-  var box = await Hive.openBox('mybox');
+  await Hive.openBox('mybox');
 
 
 

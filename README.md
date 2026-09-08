@@ -1,30 +1,37 @@
-# Yapılacaklar (To-Do App)
+﻿# Yapılacaklar (To-Do App)
 
-Flutter ile geliştirilmiş basit bir yapılacaklar listesi uygulaması. Görevler cihaz üzerinde Hive ile kalıcı olarak saklanır.
+Flutter ile geliştirilmiş basit bir yapılacaklar listesi uygulaması. Görevler cihaz üzerinde Hive CE ile kalıcı olarak saklanır.
 
 ## Özellikler
 
 - Görev ekleme
 - Görevleri tamamlandı olarak işaretleme
 - Kaydırarak (swipe) görev silme
-- Hive ile yerel veri saklama (uygulama kapanınca görevler kaybolmaz)
+- Hive CE ile yerel veri saklama (uygulama kapanınca görevler kaybolmaz)
+- Firebase Auth ile e-posta giriş / kayıt
 
 ## Kullanılan teknolojiler
 
 - Flutter / Dart
-- Hive & Hive Flutter (yerel veritabanı)
+- Hive CE & Hive CE Flutter (yerel veritabanı)
+- Firebase Auth
 - flutter_slidable (kaydırarak silme)
 
 ## Proje yapısı
 
 ```
 lib/
-  main.dart              # Uygulama girişi, Hive başlatma
+  main.dart              # Uygulama girişi, Firebase + Hive CE başlatma
+  firebase_options.dart  # Firebase yapılandırması
   data/
-    database.dart        # Hive okuma / yazma işlemleri
+    database.dart        # Hive CE okuma / yazma işlemleri
   pages/
+    auth_page.dart       # Oturum durumuna göre yönlendirme
+    login_page.dart      # Giriş ekranı
+    register_page.dart   # Kayıt ekranı
     home_page.dart       # Ana ekran (liste, ekle, sil, checkbox)
   util/
+    app_style.dart       # Renk ve kart stili
     todo_tile.dart       # Tek bir görev satırı
     dialog_box.dart      # Yeni görev ekleme diyaloğu
     my_button.dart       # Ortak buton bileşeni
@@ -46,8 +53,8 @@ flutter run
 
 ## Nasıl kullanılır?
 
-1. Sağ alttaki **+** butonuna bas.
-2. Görevi yazıp **kaydet**e tıkla.
-3. Checkbox ile görevi tamamla.
-4. Görevi sola kaydırarak sil.
-
+1. E-posta ile giriş yap veya kayıt ol.
+2. Sağ alttaki **+** butonuna bas.
+3. Görevi yazıp **kaydet**e tıkla.
+4. Checkbox ile görevi tamamla.
+5. Görevi sola kaydırarak sil.

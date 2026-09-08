@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_app/pages/home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:to_do_app/util/app_style.dart';
 

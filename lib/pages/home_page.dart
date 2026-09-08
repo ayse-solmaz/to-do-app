@@ -3,7 +3,7 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:to_do_app/util/dialog_box.dart";
 import "package:to_do_app/util/todo_tile.dart";
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'package:to_do_app/data/database.dart';
 import 'package:to_do_app/util/app_style.dart';
 
