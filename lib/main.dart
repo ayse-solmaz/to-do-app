@@ -1,9 +1,20 @@
 import "package:flutter/material.dart";
+import 'package:to_do_app/pages/auth_page.dart';
 import 'package:to_do_app/pages/home_page.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:to_do_app/util/app_style.dart';
+import 'package:to_do_app/pages/login_page.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+import 'package:to_do_app/pages/auth_page.dart';
 void main() async{
 WidgetsFlutterBinding.ensureInitialized();
+
+//  firebase'i başlatıyoruz
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   // initialize hive
   await Hive.initFlutter();
 
@@ -33,7 +44,7 @@ class MyApp extends StatelessWidget{
         ).copyWith(primary: kNavy, surface: Colors.white),
         splashFactory: InkSparkle.splashFactory,
       ),
-      home: const ToDoApp(),
+      home:const AuthPage(),
       );
     }
   }

@@ -47,3 +47,9 @@ app.*.map.json
 # Yerel gorsel dosyalari depoya girmesin, klasor .gitkeep ile korunuyor
 assets/images/*
 !assets/images/.gitkeep
+
+# Firebase Configuration Files
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
+firebase_options.dart
+firebase.json
