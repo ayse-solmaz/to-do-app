@@ -60,8 +60,8 @@ class _RegisterPageState extends State<RegisterPage> {
   void dispose() { 
     _emailController.dispose();
     _passwordController.dispose();
-    super.dispose();
     _confirmPasswordController.dispose();
+    super.dispose();
   }
   @override
   Widget build(BuildContext context) {
